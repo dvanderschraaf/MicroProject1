@@ -8,6 +8,13 @@ let threshold = 30;
 let rectX;
 let rectY;
 
+//OPACITY
+let alpha = map(energy, 0, 100, 40, 255);
+
+// frames
+let cooldown = 60; 
+
+
 function setup() {
   createCanvas(windowWidth * 0.8, windowHeight * 0.6);
   rectX = width / 2;
@@ -31,21 +38,26 @@ function draw() {
   // Keep energy in bounds
   energy = constrain(energy, 0, 100);
 
-  // STATE LOGIC
-  if (energy > threshold) {
-    // ACTIVE STATE
-    rectX = lerp(rectX, mouseX, 0.1);
-    rectY = lerp(rectY, mouseY, 0.1);
+// STATE LOGIC (3 states)
+    if (energy > threshold) {
+  // ACTIVE
+    rectX = lerp(rectX, mouseX, 0.01);
+    rectY = lerp(rectY, mouseY, 0.01);
+  } else if (energy > 0) {
+  // EXHAUSTED
+    rectX = lerp(rectX, mouseX, 0.0002);
+    rectY = lerp(rectY, mouseY, 0.0002);
   } else {
-    // EXHAUSTED STATE
-    rectX = lerp(rectX, mouseX, 0.02);
-    rectY = lerp(rectY, mouseY, 0.02);
-  }
+  // COLLAPSED (energy = 0)
+    energy = 0;
+    // no movement at all
+}
 
   // SIZE CONTROLLED BY ENERGY
   let size = map(energy, 0, 100, 20, 80);
 
-  fill(100);
+  let alpha = map(energy, 0, 100, 40, 255);
+  fill(100, alpha);
   rect(rectX, rectY, size, size);
 
   // STATE LABEL
@@ -58,6 +70,7 @@ function draw() {
   } else {
     text("State: Exhausted", width / 2, height - 20);
   }
+
 }
 
 function windowResized() {
