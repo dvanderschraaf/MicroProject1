@@ -46,6 +46,21 @@
     <p> - Once energy is fully drained, rectangle cant move; needs no mouse movement in order to regain energy. This adds a true boundary condition (energy = 0 -> system lock);</p>   
     <p>Before: Exhaustion = inconvenience | Now: Exhaustion = loss of mobility</p>
     <p> - Opacity decreases when energy decreases making depletion visible</p>
+    <p> - Added text labels displaying energy and current state</p>
+
+<h2>New Changes (03/04/26):</h2> 
+    <p> - Switched energy drain when movement occurs instead of based off mouse movement. Implemented energy recovery when the rectangle stops moving.</p>
+    <p> - Added color, took away opacity. Now instead of losing color, the rectangle and background (slightly different shades), turn from green to red the more energy is drained.</p>
+
+<h2>New Changes (03/12/26):</h2> 
+    <p> - Messing with numbers, seeing what fits best for drain effect.</p>
+    <p> - Added more states of exhaustion (5 states).</p>
+
+<h2>New Changes (03/15/26):</h2> 
+    <p> - Messing with energy box fixed to be inside the rectangle, the rectangle itself represent energy </p>
+    <p> - Added a shaking effect when tired to show visual exhaustion. Had to change it because instead of every regaining energy, it stayed drained due to never actually comoing to a complete stop. Im going to see if I can work around it though.</p>
+    <p> - learned about code modularization, made the sketch into separate functions making the code a lot cleaner</p>
+
 
 
   <script src="../js/microproject.js"></script>

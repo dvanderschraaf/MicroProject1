@@ -8,11 +8,13 @@ let threshold = 30;
 let rectX;
 let rectY;
 
-//OPACITY
-let alpha = map(energy, 0, 100, 40, 255);
 
 // frames
 let cooldown = 60; 
+
+
+let prevRectX;
+let prevRectY;
 
 
 function setup() {
@@ -21,57 +23,122 @@ function setup() {
   rectY = height / 2;
   rectMode(CENTER);
   textAlign(CENTER);
+
+  prevRectX = rectX;
+  prevRectY = rectY;
+
 }
+
 
 function draw() {
-  background(240);
 
-  let movement = dist(mouseX, mouseY, pmouseX, pmouseY);
-
-  // INPUT EFFECT
-  if (movement > 1) {
-    energy -= 0.5;
-  } else {
-    energy += 0.3;
+    updateMovement();
+    updateEnergy();
+    
+    drawEnvironment();
+    drawRectangle();
+    drawUI();
+  
   }
 
-  // Keep energy in bounds
-  energy = constrain(energy, 0, 100);
+  function updateMovement() {
 
-// STATE LOGIC (3 states)
-    if (energy > threshold) {
-  // ACTIVE
-    rectX = lerp(rectX, mouseX, 0.01);
-    rectY = lerp(rectY, mouseY, 0.01);
-  } else if (energy > 0) {
-  // EXHAUSTED
-    rectX = lerp(rectX, mouseX, 0.0002);
-    rectY = lerp(rectY, mouseY, 0.0002);
-  } else {
-  // COLLAPSED (energy = 0)
-    energy = 0;
-    // no movement at all
-}
+    if (energy > 70) {
+      let effort = map(energy, 70, 100, 0.02, 0.1);
+      rectX = lerp(rectX, mouseX, effort);
+      rectY = lerp(rectY, mouseY, effort);
+  
+    } else if (energy > 40) {
+      rectX = lerp(rectX, mouseX, 0.02);
+      rectY = lerp(rectY, mouseY, 0.02);
+  
+    } else if (energy > 10) {
+      rectX = lerp(rectX, mouseX, 0.008);
+      rectY = lerp(rectY, mouseY, 0.008);
+  
+    } else if (energy > 0) {
+      rectX = lerp(rectX, mouseX, 0.002);
+      rectY = lerp(rectY, mouseY, 0.002);
+  
+    } else {
+      energy = 0;
+    }
+  
+  }
 
-  // SIZE CONTROLLED BY ENERGY
+  function updateEnergy() {
+
+    let movement = dist(rectX, rectY, prevRectX, prevRectY);
+  
+    if (movement > 0.01) {
+      energy -= movement * 0.02;
+    } else {
+      energy += 0.15;
+    }
+  
+    energy = constrain(energy, 0, 100);
+  
+    prevRectX = rectX;
+    prevRectY = rectY;
+  
+  }
+
+  function drawEnvironment() {
+
+    let r = map(energy, 100, 0, 0, 255);
+    let g = map(energy, 100, 0, 200, 0);
+    let b = 80;
+  
+    background(r, g, b);
+  
+  }
+
+function drawRectangle() {
+
   let size = map(energy, 0, 100, 20, 80);
-
   let alpha = map(energy, 0, 100, 40, 255);
-  fill(100, alpha);
+
+  stroke(255);
+  strokeWeight(3.5);
+  noFill();
   rect(rectX, rectY, size, size);
 
-  // STATE LABEL
+  let energyHeight = map(energy, 0, 100, 0, size);
+
+  noStroke();
+  fill(255, alpha);
+
+  let bottomY = rectY + size / 2;
+  rect(rectX, bottomY - energyHeight / 2, size, energyHeight);
+
+}
+
+function drawUI() {
+
   fill(0);
   textSize(14);
   text("Energy: " + floor(energy), width / 2, height - 40);
 
-  if (energy > threshold) {
+  if (energy > 70) {
     text("State: Active", width / 2, height - 20);
+
+  } else if (energy > 40) {
+    text("State: Tired", width / 2, height - 20);
+
+  } else if (energy > 10) {
+    text("State: Very Tired", width / 2, height - 20);
+
+  } else if (energy > 0.1) {
+    text("State: Critical", width / 2, height - 20);
+
   } else {
-    text("State: Exhausted", width / 2, height - 20);
+    text("State: Collapsed", width / 2, height - 20);
   }
 
 }
+
+
+
 
 function windowResized() {
   resizeCanvas(windowWidth * 0.8, windowHeight * 0.6);
