@@ -12,20 +12,30 @@ let rectY;
 //frames
 let cooldown = 60; 
 
-//previous position
+//previous square position
 let prevRectX;
 let prevRectY;
 
 //minimum energy to move
-let wakeThreshold = 10;
+let wakeThreshold = 75;
 
 //pause dureing collapse
 let isCollapsed = false;
 let collapseTimer = 0;
 
 //frozen state (3 seconds)
-let collapseDuration = 180;
+let collapseDuration = 30;
 
+//score starts off at 0
+let score = 0;
+
+//circle possition + size
+let circles = [];
+let numCircles = 3;
+let circleSize = 30;
+
+//
+let gameOver = false;
 
 
 function setup() {
@@ -38,10 +48,25 @@ function setup() {
     prevRectX = rectX;
     prevRectY = rectY;
 
+    for (let i = 0; i < numCircles; i++) {
+      spawnCircle();
+    }
+
 }
 
+function spawnCircle() {
+    let x = random(50, width - 50);
+    let y = random(50, height - 50);
+
+    circles.push({ x: x, y: y });
+}
 
 function draw() {
+
+  if (gameOver) {
+    drawGameOver();
+    return;
+  }
 
     updateMovement();
     updateEnergy();
@@ -49,7 +74,30 @@ function draw() {
     drawEnvironment();
     drawRectangle();
     drawUI();
+
+    drawCircles();
+
+    checkCollision();
   
+}
+
+//game over screen
+function drawGameOver() {
+
+    background(0);
+
+    fill(255,0,0);
+    textSize(100);
+    text("GAME OVER", width / 2, height / 2 - 100);
+
+    fill(255);
+    textSize(40);
+    text("Press SPACE to try again", width / 2, height / 2 - 40);
+
+    fill(255,0,0);
+    textSize(20);
+    text("Score: " + score, width / 2, height / 2);
+    
 }
 
 function updateMovement() {
@@ -57,24 +105,34 @@ function updateMovement() {
     if (isCollapsed) {
       return;
     }
-  
+    
+    //speed booster
+    let difficultyBoost = map(score, 0, 50, 0, 0.15, true);
+    
     if (energy > 70) {
-      //effort is movement speed - based on energy level
-      let effort = map(energy, 70, 100, 0.02, 0.1);
+    
+      let effort = map(energy, 70, 100, 0.02, 0.1) + difficultyBoost;
+    
       rectX = lerp(rectX, mouseX, effort);
       rectY = lerp(rectY, mouseY, effort);
-  
+    
     } else if (energy > 40) {
-      rectX = lerp(rectX, mouseX, 0.02);
-      rectY = lerp(rectY, mouseY, 0.02);
-      //collapsed state (frozen)
+    
+      let effort = 0.05 + difficultyBoost * 0.5;
+    
+      rectX = lerp(rectX, mouseX, effort);
+      rectY = lerp(rectY, mouseY, effort);
+    
     } else if (energy > 0.01) {
-      rectX = lerp(rectX, mouseX, 0.008);
-      rectY = lerp(rectY, mouseY, 0.008);
-  
+    
+      let effort = 0.009 + difficultyBoost * 0.3;
+    
+      rectX = lerp(rectX, mouseX, effort);
+      rectY = lerp(rectY, mouseY, effort);
+    
     } else {
       isCollapsed = true;
-      collapseTimer = 0; // start timer
+      collapseTimer = 0;
     }
   
 }
@@ -92,7 +150,7 @@ function updateEnergy() {
         //frozen
       } else {
         //recover
-        energy += 0.2;
+        energy += 0.35;
   
         if (energy > wakeThreshold) {
           isCollapsed = false;
@@ -102,7 +160,7 @@ function updateEnergy() {
     } else {
   
       if (movement > 0.05) {
-        energy -= movement * 0.04;
+        energy -= movement * 0.02;
       } else {
         energy += 0.15;
       }
@@ -118,12 +176,55 @@ function updateEnergy() {
 
 function drawEnvironment() {
 
-    let r = map(energy, 100, 0, 0, 255);
-    let g = map(energy, 100, 0, 200, 0);
+    let r = map(energy, 100, 0, 250, 0);
+    let g = map(energy, 100, 0, 0, 255);
     let b = 80;
   
     background(r, g, b);
+    
+}
+
+function mousePressed() {
+
+    if (gameOver) {
+
+      if (
+        mouseX > width / 2 - 60 &&
+        mouseX < width / 2 + 60 &&
+        mouseY > height / 2 + 40 &&
+        mouseY < height / 2 + 80
+      ) {
+        resetGame();
+      }
   
+    return;
+  }
+
+    for (let i = circles.length - 1; i >= 0; i--) {
+      let c = circles[i];
+      let d = dist(mouseX, mouseY, c.x, c.y);
+
+      if (d < circleSize / 2) {
+        score++;
+
+        // remove clicked circle
+        circles.splice(i, 1);
+
+        // add a new one somewhere else
+        spawnCircle();
+
+        break; // only one per click
+      }
+    }
+}
+
+function drawCircles() {
+    fill(255, 200, 0);
+    noStroke();
+
+    for (let c of circles) {
+      ellipse(c.x, c.y, circleSize);
+    }
 }
 
 function drawRectangle() {
@@ -149,11 +250,44 @@ function drawRectangle() {
 
 }
 
+function checkCollision() {
+
+    let d = dist(mouseX, mouseY, rectX, rectY);
+
+    if (d < 40) { // adjust based on your size
+      gameOver = true;
+    }
+
+}
+
+function resetGame() {
+    score = 0;
+    energy = 100;
+    isCollapsed = false;
+
+    rectX = width / 2;
+    rectY = height / 2;
+
+    circles = []; // clear old ones
+
+    for (let i = 0; i < numCircles; i++) {
+      spawnCircle();
+    }
+
+    gameOver = false;
+}
+
 function drawUI() {
 
+    //scoreboard
     fill(0);
-    textSize(14);
-    text("Energy: " + floor(energy), width / 2, height - 40);
+    textSize(25);
+    text("Score: " + score, width / 2, 30);
+
+    //states of drained
+    fill(255);
+    textSize(20);
+    text("Energy: " + floor(energy), width / 2, height - 45);
 
     if (isCollapsed) {
       text("State: Collapsed", width / 2, height - 20);
@@ -172,7 +306,13 @@ function drawUI() {
     }
 }
 
+function keyPressed() {
 
+    if (gameOver && key === ' ') {
+      resetGame();
+    }
+
+}
 
 
 function windowResized() {

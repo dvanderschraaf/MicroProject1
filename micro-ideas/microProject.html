@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Micro-Project — Progress #1</title>
+  <title>Micro-Project</title>
 
   <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
 
@@ -61,12 +61,23 @@
     <p> - Added a shaking effect when tired to show visual exhaustion. Had to change it because instead of every regaining energy, it stayed drained due to never actually comoing to a complete stop. Im going to see if I can work around it though.</p>
     <p> - learned about code modularization, made the sketch into separate functions making the code a lot cleaner</p>
 
-<h2>New Changes (03/19/26)</h2>
+<h2>New Changes (03/17/26)</h2>
     <p> - Added new variable (isCollapsed) now there is a literal rest state where the square is frozen (based on feedback I got)</p>
     <p> - Made the canvas bigger so that it fills the whole screen no matter the size</p>
 
 <h2>Rules</h2>
     <p>The square follows your mouse movement around while draining its energy; regaining its energy when mouse movement stops and the square has time to catch up and rest.</p>
+
+<h2>New Changes (03/19/26)</h2>
+    <p> - Added a scoring system with clickable targets (after seeing everyones sketches that were actually interactive games)</p>
+    <p> - Made it so when touched by the square the "game is over"</p>
+    <p> - Added a "game over" screen with a restart button when you lose. It was difficult to start a new game since the square would be waiting for you at full speed after clicking "restart" so I swapped it to the spacebar so you have a better advantage </p>
+    <p> - It was to easy to get points so I added "difficultyBoost" so that the square speeds up as you get more points, making it more and more difficult to get points</p>
+    <p> - ...</p>
+    <p> - Swapped the "drained red" and the "energized green" now because when the square has more energy, the red makes it more intense.</p>
+
+<h1>UPDATED RULES</h1>
+    <h2>DONT LET THE SQUARE TOUCH YOU - CLICK ON CIRCLES TO GET POINTS - GATHER POINTS TO GET A HIGHER SCORE</h2>
 
 
   <script src="../js/microproject.js"></script>
