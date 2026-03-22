@@ -15,8 +15,8 @@
   <h2>Concept Summary</h2>
   <p>
     This interaction models exhaustion through movement. The user controls
-    a rectangle by moving the mouse, and movement drains an energy variable
-    over time. As energy decreases, the rectangle becomes smaller and slower
+    a square by moving the mouse, and movement drains an energy variable
+    over time. As energy decreases, the square becomes smaller and slower
     to respond. If the user stops moving, the energy slowly regenerates.
   </p>
 
@@ -24,13 +24,13 @@
   <pre>let energy = 100;</pre>
   <p>
     Energy changes based on mouse movement. It controls the size and
-    responsiveness of the rectangle.
+    responsiveness of the square.
   </p>
 
   <h2>Base Build</h2>
   <p>
     The first version includes two states: Active and Exhausted. When energy
-    is above a threshold, the rectangle follows the mouse normally. When
+    is above a threshold, the square follows the mouse normally. When
     energy drops below the threshold, movement becomes slow and restricted.
   </p>
 
@@ -43,21 +43,21 @@
   </p>
 
  <h2>New Changes (02/28/26):</h2> 
-    <p> - Once energy is fully drained, rectangle cant move; needs no mouse movement in order to regain energy. This adds a true boundary condition (energy = 0 -> system lock);</p>   
+    <p> - Once energy is fully drained, square cant move; needs no mouse movement in order to regain energy. This adds a true boundary condition (energy = 0 -> system lock);</p>   
     <p>Before: Exhaustion = inconvenience | Now: Exhaustion = loss of mobility</p>
     <p> - Opacity decreases when energy decreases making depletion visible</p>
     <p> - Added text labels displaying energy and current state</p>
 
 <h2>New Changes (03/04/26):</h2> 
-    <p> - Switched energy drain when movement occurs instead of based off mouse movement. Implemented energy recovery when the rectangle stops moving.</p>
-    <p> - Added color, took away opacity. Now instead of losing color, the rectangle and background (slightly different shades), turn from green to red the more energy is drained.</p>
+    <p> - Switched energy drain when movement occurs instead of based off mouse movement. Implemented energy recovery when the square stops moving.</p>
+    <p> - Added color, took away opacity. Now instead of losing color, the square and background (slightly different shades), turn from green to red the more energy is drained.</p>
 
 <h2>New Changes (03/12/26):</h2> 
     <p> - Messing with numbers, seeing what fits best for drain effect.</p>
     <p> - Added more states of exhaustion (5 states).</p>
 
 <h2>New Changes (03/15/26):</h2> 
-    <p> - Messing with energy box fixed to be inside the rectangle, the rectangle itself represent energy </p>
+    <p> - Messing with energy box fixed to be inside the square, the square itself represent energy </p>
     <p> - Added a shaking effect when tired to show visual exhaustion. Had to change it because instead of every regaining energy, it stayed drained due to never actually comoing to a complete stop. Im going to see if I can work around it though.</p>
     <p> - learned about code modularization, made the sketch into separate functions making the code a lot cleaner</p>
 
