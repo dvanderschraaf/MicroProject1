@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Interface Audit</title>
+  </head>
+
+  <body>
+
+    <h1>Interface Audit - Micro Project Page - 04/09/26</h1>
+        <p>The picro project page shows my interactive system, a survival game where the user collects points while avoiding a dangerous square. The system itseld is functional and complex but the page doesnt communicate or support that complexity. Using Norman and Nielsen as guides, it shows me I have a lot of communication to work on.</p> 
+    <h2>1. Visibility of System Status</h2>
+        <p>The page somewhat communicates the systems status, not consistently though. Once the sketch is runnning, there are indicators to help the player understand what is happening but there is no clear indication of what the page is or what the player is supposed to do. No introduction, no labels, no instructions, etc.</p> 
+        <p>Also, while the system has many internal states, these states are not always clear. For example, when the square collapses and stops, this doesnt really communicate what is going on. A new user may have a good educated guess on whats going on but the communication is weak and that reflects on the design.</p>
+    <h2>2. Affordances & Signifiers</h2>
+        <p>The only actions are moving the mouse and clicking the circles, aswell as pressing the spacebar to restart. These actions are not instructed or lableed so it is up to the player to have to get the hang of what is going on. Also the role of the square is not expressed clearly so at first, its confusing why the game keeps ending.</p> 
+        <p>The restart interaction is also weak. The game over screen has text that tells you to press space bar but it only appears after the game ends. The game also resets as soon as you press spacebar, giving no time inbetween states. This makes the player rely on discovery to learn rather than clear communication.</p>
+    <h2>3. Navigation & Mapping</h2>
+        <p>Navigation on this page is very minimal and partially unclear. It is a single function and a contained interaction but not a lot of structure guiding how the user can interact. There is no clear "starting point", which makes getting started with the guessing game even more difficult.</p> 
+        <p>The mapping between input and outcome is mostly intuitive once the interaction begins. Mouse movement maps directly to position and clicking the cirlces gives you points. The relationship between the score and difficulty is not clearly communicated though. The square gets faster and this escelates quickly over time withought letting the player know.</p>
+    <h2>4. Constraints & Assumptions</h2>
+        <p>The page assuumes that the player understands the basic interaction. It also assumes that the player will experiment to discover how it works. For example, the difficulty increasing over time, pressing circles gives you points, and the square is following the mouse movemnet.</p> 
+        <p>Most of the constraints are invisible which restricts the player without clearing preparing them for the game. For example, the energy system that controls the square. The logic is not fully explainede nor communicated so its up to the player to assume through observation.</p> 
+    <h2>5. Heuristic Violations</h2>
+        <h3> - 1. Visibility of system statues</h3> 
+        <p>The system doesnt clearly communicate its state vefore or during important moments in the game. This happens from the start all the way to the ending. The player is not informed what state they are in or why the system is acting the way it is. The fix to this is adding a clear starting stae with instructions and a more clear label that communcates what is going on inbetween staets.</p>
+        <h3> - 2. Recognition Rather than Recall</h3> 
+        <p>This page requires the user to figure out everything through trial and error rather than immediate recognition. For example, the player has to learn that circles are clickable and that the space bar resets the game. The fix to this is to add visible instructions on the page that never leave during the game play. "Click circles to score", "avoi getting touched by the square".</p>
+    <h2>6. Structural Revision Proposal</h2>
+        <h3> - 1. Add a Clear Entry State</h3> 
+        <p>Introducing a start screen that explains all the rules adn what to expect before the game begins.</p>        
+        <h3> - 2. Improve State Visibility</h3> 
+        <p>Make the system states more clear, especially during tansitions</p>        
+        <h3> - 3. Clarify Interaction Rules</h3> 
+        <p>Include consistent, on screen instructions to communicate the key actions</p>
+
+  </body>
+</html>
