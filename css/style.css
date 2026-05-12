@@ -50,14 +50,20 @@ body {
 
   nav {
     display: flex;
+    flex-wrap: wrap;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
   
-    padding: 1rem 2rem;
+    padding: 1rem 5rem;
   
-    border-bottom: 1px solid black;
+    border-bottom: 2.5px solid black;
   
     background: white;
+  }
+
+  * {
+    box-sizing: border-box;
   }
   
   .logo {
@@ -67,12 +73,15 @@ body {
   
   .nav-links {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    flex-wrap: wrap;
   }
   
   .nav-links a {
-    text-decoration: none;
+
+    text-decoration: none; 
     color: black;
+    white-space: nowrap;
   }
 
   .container {
