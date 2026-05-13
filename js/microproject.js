@@ -45,7 +45,7 @@ function setup() {
 
   let container = document.getElementById("game-container");
 
-createCanvas(container.offsetWidth, 500);
+  createCanvas(container.offsetWidth, 500);
   
     rectX = width / 2;
     rectY = height / 2;
