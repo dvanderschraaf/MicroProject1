@@ -1,20 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">    
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Sketch #6</title>
-    
-    <!-- p5 core -->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sketch 6</title>
 
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>02/05/2026</h1>
-    <!-- p5 sketch -->
+
+    <nav>
+
+        <div class="logo">
+          DEEVO
+        </div>
+      
+        <div class="nav-links">
+          <a href="p5sketches.html">Back</a>
+          <a href="home.html">Home</a>
+          <a href="play.html">Micro Project</a>
+          <a href="readings.html">Readings</a>
+        </div>
+      
+      </nav>
+  
+    <main class="container">
+  
+      <h1>Sketch 6</h1>
+  
+      <section class="game-layout">
+  
+        <div class="game-window">
+          <!-- p5 canvas appears here automatically -->
+
+          <div id="game-container"></div>
+
+        </div>
+  
+        <div class="game-info">
+  
+          <h2>02/05/2026</h2>
+  
+          <p>After seeing Prof. Oakleys example, I had some fun ideas. Firstly, I increased the size of the "loading bar", I then decreased the size of each rectangle being added so it looked like the bar was just growing super gradually. I added the hold function instead of clicking. And lastly I added the effect of decreasing the bar so it would slowly reset once you un held the mouse. </p>
+  
+        </div>
+  
+      </section>
+  
+    </main>
+  
+    <script src="libraries/p5.min.js"></script>
     <script src="js/sketch6.js"></script>
-    <p>After seeing Prof. Oakleys example, I had some fun ideas. Firstly, I increased the size of the "loading bar", I then decreased the size of each rectangle being added so it looked like the bar was just growing super gradually. I added the hold function instead of clicking. And lastly I added the effect of decreasing the bar so it would slowly reset once you un held the mouse. </p>
 </body>
 
 </html>

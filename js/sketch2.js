@@ -1,7 +1,8 @@
 let y;
 
 function setup() {
-  createCanvas(400, 400);
+  let canvas = createCanvas(400, 400);
+  canvas.parent("game-container");
   y = height / 2;
 }
 

@@ -2,7 +2,8 @@ let x, y;
 let threshold = 80;
 
 function setup() {
-  createCanvas(1450, 600);
+  let canvas = createCanvas(500, 600);
+  canvas.parent("game-container");
   x = width / 2;
   y = height / 2;
   textSize(14);

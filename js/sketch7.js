@@ -3,7 +3,8 @@ let sizeB = 40;
 let advantage = 1; // subtle growth
 
 function setup() {
-  createCanvas(500, 300);
+  let canvas = createCanvas(500, 600);
+  canvas.parent("game-container");
   textSize(14);
   textAlign(CENTER);
 }

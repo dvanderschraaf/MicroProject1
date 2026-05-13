@@ -1,20 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">    
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Sketch #7</title>
-    
-    <!-- p5 core -->
-    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sketch 7</title>
 
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <h1>02/11/2026</h1>
-    <!-- p5 sketch -->
+
+    <nav>
+
+        <div class="logo">
+          DEEVO
+        </div>
+      
+        <div class="nav-links">
+          <a href="p5sketches.html">Back</a>
+          <a href="home.html">Home</a>
+          <a href="play.html">Micro Project</a>
+          <a href="readings.html">Readings</a>
+        </div>
+      
+      </nav>
+  
+    <main class="container">
+  
+      <h1>Sketch 7</h1>
+  
+      <section class="game-layout">
+  
+        <div class="game-window">
+          <!-- p5 canvas appears here automatically -->
+
+          <div id="game-container"></div>
+
+        </div>
+  
+        <div class="game-info">
+  
+          <h2>02/11/2026</h2>
+  
+          <p>Each circle when pressed, grows in size. The yellow (yellow resembles dishonesty in chinese culture) circle grows more exponentially than the periwinkle color (my favorite color as well as a softer color to resemble honesty). Both circles start with equal size but increase in different amounts per click. I added a restart button so that I could play around with it, I also played around with a function that makes each circle grow with a single click but it made the whole visual concept more difficult.</p>
+  
+        </div>
+  
+      </section>
+  
+    </main>
+  
+    <script src="libraries/p5.min.js"></script>
     <script src="js/sketch7.js"></script>
-    <p>Each circle when pressed, grows in size. The yellow (yellow resembles dishonesty in chinese culture) circle grows more exponentially than the periwinkle color (my favorite color as well as a softer color to resemble honesty). Both circles start with equal size but increase in different amounts per click. I added a restart button so that I could play around with it, I also played around with a function that makes each circle grow with a single click but it made the whole visual concept more difficult.</p>
+
 </body>
 
 </html>

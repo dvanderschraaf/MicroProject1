@@ -2,7 +2,8 @@ let steps=0;
 let maxSteps = 1118;
 
 function setup () {
-    createCanvas (1450, 200);
+    let canvas = createCanvas (500, 400);
+    canvas.parent("game-container");
 
 }
 function draw (){

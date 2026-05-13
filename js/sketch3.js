@@ -1,5 +1,6 @@
 function setup() {
-    createCanvas(1450, 600);
+    let canvas = createCanvas(500, 600);
+    canvas.parent("game-container");
     colorMode(HSB, 360, 100, 100, 255);
     background(250);
   }

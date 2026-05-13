@@ -1,8 +1,10 @@
 let circles = [];
 
 function setup() {
-  createCanvas(1450, 600);
+  let canvas = createCanvas(500, 400);
   noStroke();
+
+  canvas.parent("game-container");
 
   for (let i = 0; i < 30; i++) {
     circles.push({

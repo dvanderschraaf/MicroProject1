@@ -3,7 +3,8 @@ let threshold = 180;
 let caughtUntil = 0;
 let caughtDuration = 2000;
 function setup() {
-  createCanvas(1450, 650);
+  let canvas = createCanvas(500, 600);
+  canvas.parent("game-container");
   x = width / 2;
   y = height / 2;
   textSize(14);
