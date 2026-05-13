@@ -74,14 +74,22 @@ body {
 
   .container {
         width: 90%;
-        max-width: 1100px;
+        max-width: 11000px;
         display:flex;
         margin: 0 auto;
         flex-direction: row;
       }
+
+    .containerp {
+        width: 90%;
+        max-width: 11000px;
+        display:flex;
+        margin: 0 auto;
+        flex-direction: column;
+      }
   .container2 {
     width: 90%;
-    max-width: 1100px;
+    max-width: 11000px;
     margin: 0 auto ;
     padding-top: 4rem;
     padding-bottom: auto;
@@ -92,7 +100,7 @@ body {
   }
   .container3 {
     width: 90%;
-    max-width: 1000px;
+    max-width: 10000px;
     margin: auto;
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -125,7 +133,7 @@ body {
     font-weight: bold;
   
     border: 2px solid black;
-  
+    align-items: center;
     transition: 0.2s;
   }
   

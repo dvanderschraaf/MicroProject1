@@ -39,13 +39,9 @@ let gameOver = false;
 
 
 function setup() {
-  let canvas = createCanvas(800, 600);
+  let canvas = createCanvas(windowWidth * 0.8, 500);
 
   canvas.parent("game-container");
-
-  let container = document.getElementById("game-container");
-
-  createCanvas(container.offsetWidth, 500);
   
     rectX = width / 2;
     rectY = height / 2;
