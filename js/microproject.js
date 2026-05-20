@@ -39,7 +39,7 @@ let gameOver = false;
 
 
 function setup() {
-  let canvas = createCanvas(windowWidth * 0.8, 500);
+  let canvas = createCanvas(windowWidth * 0.7, windowHeight * 0.6);
 
   canvas.parent("game-container");
   
@@ -319,5 +319,5 @@ function keyPressed() {
 
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}   
+  resizeCanvas(windowWidth * 0.7, windowHeight * 0.6);
+}
